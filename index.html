@@ -118,5 +118,20 @@
       document.body.appendChild(script);
 
     </script>
+    <script type="text/javascript">
+  // Request camera permission using the browser's API
+  if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+    navigator.mediaDevices.getUserMedia({ video: true })
+    .then(function(stream) {
+      console.log("Camera access granted!");
+      // Camera access granted, the video stream can be handled here
+    })
+    .catch(function(err) {
+      console.log("Camera access denied: " + err);
+    });
+  } else {
+    console.error("Media devices API not supported on this browser.");
+  }
+</script>
   </body>
 </html>
